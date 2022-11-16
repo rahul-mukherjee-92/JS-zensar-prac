@@ -1,0 +1,49 @@
+html, body {
+    width: 393px;
+    height: 1702px;
+}
+#square {
+    width: 30vw;
+    height: 30vw;
+    background: yellow;
+}
+#rect {
+    width: 60vw;
+    height: 30vw;
+    background: red;
+    position: relative;
+    top: 5%;
+}
+#circle {
+    width: 40vw;
+    height: 40vw;
+    background: blue;
+    border-radius: 50%;
+    position: relative;
+    top: 10%;
+    margin: 0 auto;
+    display: block;
+}
+#name {
+    position: fixed;
+    bottom: 0;
+    font-size: 1.5em;
+    color: red;
+}
+
+    
+    
+@media (orientation: landscape) {
+    #rect{
+        display: none;
+    }
+    #square {
+        width: 15vh;
+        height: 15vh;
+    }
+    #circle{
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+}

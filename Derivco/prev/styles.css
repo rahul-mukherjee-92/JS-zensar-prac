@@ -1,0 +1,74 @@
+html, body {
+    width: 393px;
+    height: 1702px;
+}
+#square {
+    width: 30vw;
+    height: 30vw;
+    background: yellow;
+}
+#rect {
+    width: 60vw;
+    height: 30vw;
+    background: red;
+    position: relative;
+    top: 5%;
+}
+#circle {
+    width: 40vw;
+    height: 40vw;
+    background: blue;
+    border-radius: 50%;
+    position: relative;
+    top: 10%;
+    margin: 0 auto;
+    display: block;
+}
+#name {
+    position: fixed;
+    bottom: 0;
+    font-size: 1em;
+    color: red;
+    /* animation-name: example;
+    animation-duration: 20s; */
+}
+#InfoBar {
+    position: fixed;
+    height: 3%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+#Reels {
+    position: fixed;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 80%;
+    }
+    
+    
+@media (orientation: landscape) {
+    #rect{
+        display: none;
+    }
+    #square {
+        width: 15vh;
+        height: 15vh;
+    }
+    #circle{
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+}
+
+/* @keyframes example {
+    0%   {color: red;}
+    25%  {color: yellow;}
+    50%  {color: blue;}
+    100% {color: green;}
+  } */

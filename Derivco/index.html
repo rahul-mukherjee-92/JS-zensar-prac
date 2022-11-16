@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Derivco</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="shape" id="square"></div>
+    <div class="shape" id="rect"></div>
+    <div class="shape" id="circle"></div>
+    <span id="name">Rahul Mukherjee</span>
+
+    <script>
+        const colors = ['red','blue','green', 'orange']
+        window.addEventListener('scroll', function() {
+            if(document.documentElement.scrollTop !== 0) {
+                for(let i=0; i<colors.length;i++) {
+                    setTimeout((j) => document.getElementById("name").style.color = colors[j], 5000 * i, i)
+                }   
+            }            
+        })       
+    </script>
+</body>
+</html>
