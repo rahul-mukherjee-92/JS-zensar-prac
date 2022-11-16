@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ES6</title>
+</head>
+<body>
+    <script>
+        // creating new scope with IIFE
+        for(var i=0; i<5; i++) {
+            (
+                function(j) {
+                    setTimeout(() => console.log(j), 1000)
+                }
+            )(i)
+        }
+
+        // hoisting let vs var
+        console.log(a) // undefined
+        var a = 2
+
+        // console.log(b) // RefError
+        // let b=6
+
+       
+        {   // TDZ starts
+            let log= function() {
+                console.log(message)
+            }
+            // log() // will goive RefError here
+            let message = 10 // TDZ ends
+            log() // will work here
+        }
+
+        // Diff b/w let & var:
+        // i) Variable scope - var(local/global), let(block)
+        // ii) Creating global obj properties
+        // iii) TDZ (diff in hoisting process)
+        // iv) Redeclaration
+        const [x,y] = [1,2,3]
+        console.log(x,y)
+
+        // const usages
+        // const person = Object.freeze({age: 20})
+        const person = {age: 20}
+
+        person.age = 30
+        console.log(person)
+
+        const company = Object.freeze({
+            name: "Zensar",
+            addr: {
+                loc: "Kharadi",
+                city: "Pune",
+            }
+        })
+        company.role = "SSE" // will not work
+        company.addr.state = "MH" // will work
+        console.log(company)
+
+        const colors = ["red","green","blue"]
+        // for (const color of colors) console.log(color) // will work
+        for (const i = 0; i < colors.length; i++) {
+            console.log(colors[i]) // first time will work, but next time onwards not
+        }
+
+        
+    </script>
+</body>
+</html>

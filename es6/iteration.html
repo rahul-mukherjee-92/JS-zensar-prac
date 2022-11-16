@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iteration protocols</title>
+</head>
+<body>
+    <script>
+        class Sequence {
+            constructor(start=1, end=Infinity, interval=1) {
+                this.start = start
+                this.end=end
+                this.interval=interval
+            }
+            [Symbol.iterator]() {
+                let counter=0
+                let nextIndex=this.start
+                return {
+                    next: () => {
+                        if(nextIndex <= this.end) {
+                            let res= {value: nextIndex, done: false}
+                            counter++
+                            nextIndex += this.interval
+                            return res;
+                        } else {
+                            return {value: counter, done: true}
+                        }
+                    },
+                    return: () => {
+                        console.log("cleaning")
+                        return {value: undefined, done: true}
+                    }
+                }
+            }
+        }
+
+        const oddNum = new Sequence(1,10,2)
+        for(let num of oddNum) {
+            if(num > 5) break;
+            console.log(num)
+        }
+
+        const arr = [1,2,3]
+
+        const iterator = arr[Symbol.iterator]()
+        console.log(iterator.next())
+        console.log(iterator.next())
+        console.log(iterator.next())
+        console.log(iterator.next())
+
+        // using generator
+        class List {
+            constructor() {
+                this.elements = []
+            }
+            add(el) {
+                this.elements.push(el)
+                return this
+            }
+            *[Symbol.iterator]() {
+                for(let el of this.elements) yield el
+            }
+        }
+
+        eles = new List()
+        eles.add('A').add('B').add('C')
+        for(let el of eles) console.log(el)
+
+        // iterating a generator returned by generator func
+        function* generator() {
+            console.log("1st invoke")
+            yield 1
+            console.log("2nd invoke")
+            yield 2
+        }
+
+        let gen = generator()
+        console.log(gen)
+        console.log(gen.next())
+        console.log(gen.next())
+        console.log(gen.next())
+
+        for(let g of generator) console.log(g)
+
+
+    </script>
+</body>
+</html>
